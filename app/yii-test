@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+define('YII_ENV', 'test');
+define('YII_DEBUG', true);
+
+require __DIR__.'/bootstrap.php';
+
+$config = [
+    'id' => 'yii2-log-cli-test',
+    'basePath' => __DIR__,
+    'timeZone' => 'Asia/Shanghai',
+    'components' => [
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host='.$_ENV['DB_TEST_HOST'].';dbname='.$_ENV['DB_TEST_DATABASE'],
+            'username' => $_ENV['DB_TEST_USERNAME'],
+            'password' => $_ENV['DB_TEST_PASSWORD'],
+            'charset' => $_ENV['DB_CHARSET'],
+        ],
+    ],
+    'controllerMap' => [
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => null,
+            'migrationNamespaces' => [
+            ],
+        ],
+    ],
+];
+
+$application = new yii\console\Application($config);
+$exitCode = $application->run();
+exit($exitCode);

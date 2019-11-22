@@ -1,0 +1,9 @@
+server {
+    listen 80;
+    server_name www.${X_DOMAIN};
+    root /project/app/web;
+    index index.php;
+
+    include project/php.include;
+    include project/static.include;
+}
