@@ -7,6 +7,9 @@ use Yii;
 use yii\di\Container;
 use yii\web\Application;
 
+/**
+ * Web 场景测试用例基类
+ */
 abstract class WebAppTestCase extends TestCase
 {
     protected function setUp(): void
@@ -14,7 +17,7 @@ abstract class WebAppTestCase extends TestCase
         $config = [
             'class' => Application::class,
             'id' => 'yii2-log-web-test',
-            'basePath' => dirname(__DIR__),
+            'basePath' => __DIR__,
             'timeZone' => 'Asia/Shanghai',
             'components' => [
                 'db' => [

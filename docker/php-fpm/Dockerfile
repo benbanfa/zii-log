@@ -1,3 +1,5 @@
+# PHP FPM 镜像
+
 FROM modicn/php-dev:7.1-fpm-alpine
 
 # 使用 php 用户运行 PHP-FPM 工作进程

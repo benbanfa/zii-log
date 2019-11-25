@@ -1,5 +1,7 @@
 <?php
 
+// PHP CS Fixer 配置文件
+
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__.'/app')
     ->in(__DIR__.'/src')

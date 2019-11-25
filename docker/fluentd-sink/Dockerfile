@@ -1,3 +1,5 @@
+# Fluentd 汇总实例镜像
+
 FROM fluentd:v1.6-1
 
 USER root

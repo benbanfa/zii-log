@@ -1,3 +1,5 @@
+# MySQL 配置
+
 [client]
 default-character-set=utf8mb4
 

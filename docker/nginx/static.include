@@ -1,3 +1,5 @@
+# 静态资源相关配置
+
 location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {
     try_files $uri = 404;
 }

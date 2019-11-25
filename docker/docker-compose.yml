@@ -1,3 +1,5 @@
+# Docker Compose 配置
+
 version: '2'
 networks:
   project:
@@ -38,6 +40,15 @@ services:
     volumes:
       - ./nginx:/etc/nginx/project
       - ../app/web:/project/app/web
+  fluentd-sink:
+    build:
+      context: ./fluentd-sink
+    networks:
+      - project
+    volumes:
+      - ./fluentd-sink/fluentd.conf:/fluentd/etc/fluent.conf
+    depends_on:
+      - mysql
   fluentd-forwarder:
     image: fluentd:v1.6-1
     networks:
@@ -46,12 +57,3 @@ services:
       - ./fluentd-forwarder/fluentd.conf:/fluentd/etc/fluent.conf
     depends_on:
       - fluentd-sink
-  fluentd-sink:
-    build:
-      context: ./fluentd-sink
-    networks:
-      - project
-    volumes:
-      - ./fluentd-sink/fluentd.conf:/fluentd/etc/fluent.conf
-
-

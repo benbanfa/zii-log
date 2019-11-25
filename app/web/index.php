@@ -1,5 +1,7 @@
 <?php
 
+// HTTP 程序入口文件
+
 define('YII_ENV', 'dev');
 define('YII_DEBUG', true);
 
@@ -12,11 +14,6 @@ require dirname(__DIR__).'/bootstrap.php';
  */
 $config = [
     'id' => 'yii2-log-web-dev',
-    'basePath' => dirname(__DIR__),
-    'timeZone' => 'Asia/Shanghai',
-    'bootstrap' => [
-        'log',
-    ],
     'components' => [
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -24,16 +21,12 @@ $config = [
             'rules' => [
             ],
         ],
-        'log' => [
-            'targets' => [
-                [
-                    'class' => \zii\log\FluentTarget::class,
-                    'host' => 'fluentd-forwarder',
-                    'port' => 24224,
-                ],
-            ],
-        ],
     ],
 ];
+
+$config = \yii\helpers\ArrayHelper::merge(
+    require dirname(__DIR__).'/config.php',
+    $config
+);
 
 (new yii\web\Application($config))->run();

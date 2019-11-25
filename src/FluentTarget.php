@@ -10,6 +10,9 @@ use yii\web\Request;
 use yii\web\Session;
 use yii\web\User;
 
+/**
+ * 通过网络发送日志给 Fluentd 实例
+ */
 class FluentTarget extends Target
 {
     /**
@@ -21,6 +24,14 @@ class FluentTarget extends Target
      * @var string
      */
     public $port;
+
+    public $logVars = [
+        '_GET',
+        '_POST',
+        '_FILES',
+        '_COOKIE',
+        '_SESSION',
+    ];
 
     /**
      * @var FluentLogger
@@ -80,8 +91,8 @@ class FluentTarget extends Target
             'level' => $level,
             'message' => $text,
             'data' => $data,
-            'appId' => Yii::$app->id,
-            'category' => $category,
+            'appId' => substr(Yii::$app->id, 0, 60),
+            'category' => substr($category, 0, 200),
             'userId' => $userId,
             'sessionId' => $sessionId,
             'remoteIp' => $remoteIp,
