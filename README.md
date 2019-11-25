@@ -67,7 +67,9 @@ Fluentd 是满足以上需求的日志中间件。
 
 ## 开发与验证
 
-以下是使用 Docker Compose 配置的说明。
+本项目提供的 Docker Compose 配置，实现的是将日志采集、归档至 `mysql` 容器 `dev` 库的 `log` 表中。
+
+以下是 Docker Compose 配置的使用说明。
 
 ### 创建 Docker Compose 的 .env 文件
 
