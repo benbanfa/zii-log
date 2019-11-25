@@ -37,8 +37,8 @@ Fluentd 是满足以上需求的日志中间件。
         nginx/              Nginx 配置
         php-fpm             PHP-FPM Dockerfile 及 PHP 配置
     docs/                   文档
-    src/                    功能代码主目录
-    tests/                  测试代码目录
+    src/                    PHP 代码主目录
+    tests/                  PHP 测试代码目录
     vendor/                 PHP Composer 依赖安装目录
 
 提示：对重要文件的说明，可阅读文件首部的注释。
