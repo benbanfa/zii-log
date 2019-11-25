@@ -27,6 +27,9 @@ abstract class WebAppTestCase extends TestCase
                     'password' => $_ENV['DB_PASSWORD'],
                     'charset' => $_ENV['DB_CHARSET'],
                 ],
+                'user' => [
+                    'identityClass' => User::class,
+                ],
             ],
         ];
 

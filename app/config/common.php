@@ -3,7 +3,8 @@
 // 公共配置
 
 return [
-    'basePath' => __DIR__,
+    'basePath' => dirname(__DIR__),
+    'runtimePath' => dirname(__DIR__).'/var',
     'timeZone' => 'Asia/Shanghai',
     'bootstrap' => [
         'log',
@@ -12,7 +13,10 @@ return [
         'log' => [
             'targets' => [
                 [
-                    'class' => \zii\log\FluentTarget::class,
+                    'class' => \yii\log\FileTarget::class,
+                ],
+                [
+                    'class' => \zii\log\FluentdTarget::class,
                     'levels' => ['error', 'warning'],
                     'host' => 'fluentd-forwarder',
                     'port' => 24224,
@@ -20,7 +24,7 @@ return [
             ],
         ],
         'db' => [
-            'class' => 'yii\db\Connection',
+            'class' => yii\db\Connection::class,
             'dsn' => 'mysql:host='.$_ENV['DB_HOST'].';dbname='.$_ENV['DB_DATABASE'],
             'username' => $_ENV['DB_USERNAME'],
             'password' => $_ENV['DB_PASSWORD'],

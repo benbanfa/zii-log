@@ -4,7 +4,6 @@
     "type": "library",
     "require": {
         "php": ">=7.1.0",
-        "benbanfa/exclude-composer-assets": "dev-master",
         "yiisoft/yii2": "^2.0",
         "fluent/logger": "^1.0"
     },
@@ -23,11 +22,5 @@
         }
     },
     "license": "BSD-3-Clause",
-    "minimum-stability": "stable",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/benbanfa/exclude-composer-assets.git"
-        }
-    ]
+    "minimum-stability": "stable"
 }

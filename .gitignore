@@ -5,3 +5,4 @@
 /docker/.env
 /tests/.env
 /vendor/
+/phpunit.xml

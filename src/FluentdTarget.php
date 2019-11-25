@@ -13,7 +13,7 @@ use yii\web\User;
 /**
  * 通过网络发送日志给 Fluentd 实例
  */
-class FluentTarget extends Target
+class FluentdTarget extends Target
 {
     /**
      * @var string
@@ -50,8 +50,12 @@ class FluentTarget extends Target
         }
     }
 
+    /**
+     * appId、category、userId 在数据库对应的字段有长度限制，所以进行了截取
+     */
     public function formatMessage($message)
     {
+        // 没有花时间去了解 $timestamp
         list($text, $level, $category, $timestamp) = $message;
 
         $level = Logger::getLevelName($level);
@@ -78,7 +82,7 @@ class FluentTarget extends Target
             /* @var $userCompo User */
             $userCompo = Yii::$app->has('user', true) ? Yii::$app->get('user') : null;
             if ($userCompo && ($user = $userCompo->getIdentity(false))) {
-                $userId = $user->getId();
+                $userId = substr($user->getId(), 0, 60);
             }
 
             /* @var $session Session */
@@ -87,7 +91,7 @@ class FluentTarget extends Target
         }
 
         return [
-            'time' => date('Y-m-d H:i:s'),
+            'time' => date('Y-m-d H:i:s', $timestamp),
             'level' => $level,
             'message' => $text,
             'data' => $data,

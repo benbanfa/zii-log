@@ -2,9 +2,6 @@
 
 // HTTP 程序入口文件
 
-define('YII_ENV', 'dev');
-define('YII_DEBUG', true);
-
 require dirname(__DIR__).'/bootstrap.php';
 
 /**
@@ -25,7 +22,7 @@ $config = [
 ];
 
 $config = \yii\helpers\ArrayHelper::merge(
-    require dirname(__DIR__).'/config.php',
+    require dirname(__DIR__).'/config/common.php',
     $config
 );
 

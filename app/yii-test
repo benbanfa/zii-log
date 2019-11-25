@@ -9,7 +9,7 @@ define('YII_DEBUG', true);
 require __DIR__.'/bootstrap.php';
 
 $config = [
-    'id' => 'yii2-log-cli-test',
+    'id' => 'yii2-log-console-test',
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
@@ -19,19 +19,11 @@ $config = [
             'charset' => $_ENV['DB_CHARSET'],
         ],
     ],
-    'controllerNamespace' => 'app\\commands',
-    'controllerMap' => [
-        'migrate' => [
-            'class' => 'yii\console\controllers\MigrateController',
-            'migrationPath' => null,
-            'migrationNamespaces' => [
-            ],
-        ],
-    ],
 ];
 
 $config = \yii\helpers\ArrayHelper::merge(
-    require __DIR__.'/config.php',
+    require __DIR__.'/config/common.php',
+    require __DIR__.'/config/console.php',
     $config
 );
 

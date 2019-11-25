@@ -3,26 +3,15 @@
 
 // 命令行程序开发环境入口文件
 
-define('YII_ENV', 'dev');
-define('YII_DEBUG', true);
-
 require __DIR__.'/bootstrap.php';
 
 $config = [
-    'id' => 'yii2-log-cli-dev',
-    'controllerNamespace' => 'app\\commands',
-    'controllerMap' => [
-        'migrate' => [
-            'class' => 'yii\console\controllers\MigrateController',
-            'migrationPath' => null,
-            'migrationNamespaces' => [
-            ],
-        ],
-    ],
+    'id' => 'yii2-log-console-dev',
 ];
 
 $config = \yii\helpers\ArrayHelper::merge(
-    require __DIR__.'/config.php',
+    require __DIR__.'/config/common.php',
+    require __DIR__.'/config/console.php',
     $config
 );
 

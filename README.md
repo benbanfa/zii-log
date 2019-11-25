@@ -10,7 +10,7 @@
 
 Fluentd 是满足以上需求的日志中间件。
 
-本项目评估了 PHP 写日志的三种方式：
+本项目评估了 PHP 输出日志给 Fluentd 的三种方式：
 
 - 写文件日志
 - 写 stdout
@@ -21,6 +21,8 @@ Fluentd 是满足以上需求的日志中间件。
 为方便开发、调试，本项目也提供了将日志归档至 MySQL 数据库的 Docker Compose 配置：
 
     [日志] --> [Fluentd 转发实例] --> [Fluentd 汇总实例] --> [MySQL 数据库]
+    
+提示：生产环境不推荐使用 MySQL 来存储日志。
 
 ## 目录说明
 
@@ -35,7 +37,7 @@ Fluentd 是满足以上需求的日志中间件。
         mysql/              MySQL 配置
             init.d/         初始化数据库的 SQL
         nginx/              Nginx 配置
-        php-fpm             PHP-FPM Dockerfile 及 PHP 配置
+        php-fpm/            PHP-FPM Dockerfile 及 PHP 配置
     docs/                   文档
     src/                    PHP 代码主目录
     tests/                  PHP 测试代码目录
@@ -55,7 +57,7 @@ Fluentd 是满足以上需求的日志中间件。
             'log' => [
                 'targets' => [
                     [
-                        'class' => \zii\log\FluentTarget::class,
+                        'class' => \zii\log\FluentdTarget::class,
                         'levels' => ['error', 'warning'],
                         'host' => 'fluentd-forwarder', // Fluentd 实例地址
                         'port' => 24224, // Fluentd 实例端口
@@ -102,3 +104,8 @@ Fluentd 是满足以上需求的日志中间件。
     ./app/yii log/error 日志内容
 
 提示：确认日志能够被收录到数据库中。
+
+## 参考资料
+
+- https://docs.fluentd.org/input/forward
+- https://docs.fluentd.org/buffer
