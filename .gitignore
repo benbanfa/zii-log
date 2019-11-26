@@ -1,8 +1,6 @@
 .idea
 .php_cs.cache
 /composer.lock
-/app/.env
-/docker/.env
 /tests/.env
 /vendor/
 /phpunit.xml
