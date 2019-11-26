@@ -28,7 +28,7 @@ class FluentdTargetTest extends WebAppTestCase
             'level' => 'error',
             'message' => '消息',
             'data' => null,
-            'appId' => 'yii2-log-web-test',
+            'appId' => 'zii-log-web-test',
             'category' => str_repeat('c', 200),
             'userId' => 'USER_ID',
             'sessionId' => null,

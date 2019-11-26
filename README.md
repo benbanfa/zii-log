@@ -4,7 +4,7 @@
 
 - FluentdTarget 通过网络发送日志给 Fluentd 实例
 
-如果你要验证、开发本扩展，可使用我们提供的 [Docker Compose 开发环境](https://github.com/benbanfa/yii2-log-dev)。
+如果你要验证、开发本扩展，可使用我们提供的 [Docker Compose 开发环境](https://github.com/benbanfa/zii-log-dev)。
 
 ## 目录说明
 

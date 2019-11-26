@@ -16,7 +16,7 @@ abstract class WebAppTestCase extends TestCase
     {
         $config = [
             'class' => Application::class,
-            'id' => 'yii2-log-web-test',
+            'id' => 'zii-log-web-test',
             'basePath' => __DIR__,
             'timeZone' => 'Asia/Shanghai',
             'components' => [
