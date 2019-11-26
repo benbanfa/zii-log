@@ -16,17 +16,15 @@ Fluentd 是满足以上需求的日志中间件。
 - 写 stdout
 - 通过网络发送日志给 Fluentd 实例
 
-提供了 FluentdTarget PHP 类，实现了通过网络发送日志给 Fluentd 实例。
+基于评估结论，提供了 FluentdTarget PHP 类，实现了通过网络发送日志给 Fluentd 实例。
 
-为方便开发、调试，本项目也提供了将日志归档至 MySQL 数据库的 Docker Compose 配置：
+为方便开发、调试，本项目也提供了将日志归档至 MySQL 数据库（通俗易懂）的 Docker Compose 配置：
 
     [日志] --> [Fluentd 转发实例] --> [Fluentd 汇总实例] --> [MySQL 数据库]
-    
-提示：生产环境不推荐使用 MySQL 来存储日志。
 
 ## 目录说明
 
-    app/                    为调试该扩展而打包的 Yii2 应用
+    app/                    为调试该扩展而打包的 Yii2 示例项目
         commands/           命令行脚本
         controllers/        Web 控制器
         var/                工作目录
@@ -43,29 +41,29 @@ Fluentd 是满足以上需求的日志中间件。
     tests/                  PHP 测试代码目录
     vendor/                 PHP Composer 依赖安装目录
 
-提示：对重要文件的说明，可阅读文件首部的注释。
+提示：重要文件首部有注释。
 
 ## 在 Yii2 项目里使用该扩展
 
 修改 Yii2 应用的配置：
 
-    return [
-        'bootstrap' => [
-            'log',
-        ],
-        'components' => [
-            'log' => [
-                'targets' => [
-                    [
-                        'class' => \zii\log\FluentdTarget::class,
-                        'levels' => ['error', 'warning'],
-                        'host' => 'fluentd-forwarder', // Fluentd 实例地址
-                        'port' => 24224, // Fluentd 实例端口
-                    ],
+    // ...
+    'bootstrap' => [
+        'log',
+    ],
+    'components' => [
+        'log' => [
+            'targets' => [
+                [
+                    'class' => \zii\log\FluentdTarget::class,
+                    'levels' => ['error', 'warning'],
+                    'host' => 'fluentd-forwarder', // Fluentd 实例地址
+                    'port' => 24224, // Fluentd 实例端口
                 ],
             ],
-        ]
-    ];
+        ],
+    ],
+    // ...
 
 ## 开发与验证
 
