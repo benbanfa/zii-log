@@ -20,7 +20,6 @@ DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
     `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `time` TIMESTAMP COMMENT '日志产生的时间',
-    `archiveTime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '日志被归档的时间',
     `level` VARCHAR(20) COMMENT '日志等级',
     `message` TEXT COMMENT '日志消息',
     `data` JSON COMMENT '日志数据',
