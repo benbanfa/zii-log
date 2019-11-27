@@ -1,6 +1,6 @@
 {
-    "name": "benbanfa/zii-log",
-    "description": "benbanfa/zii-log",
+    "name": "zii/log",
+    "description": "zii/log",
     "type": "library",
     "require": {
         "php": ">=7.1.0",
